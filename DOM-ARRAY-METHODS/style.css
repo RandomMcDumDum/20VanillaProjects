@@ -64,7 +64,7 @@ h3 {
 }
 
 .person {
-    display: felx;
+    display: flex;
     justify-content: space-between;
     font-size: 20px;
     margin-bottom: 10px;
