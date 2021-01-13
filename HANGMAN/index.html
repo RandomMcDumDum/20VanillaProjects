@@ -9,7 +9,7 @@
 <body>
     <h1>HANGMAN</h1>
     <p>Find the hidden word - Enter a letter</p>
-    <div class="container">
+    <div class="game-container">
         <svg height='250' width='200' class="figure-container">
             <!-- ROD -->
             <line x1='60' y1='20' x2='140' y2='20'/>
@@ -30,8 +30,36 @@
 
 
         </svg>
+
+        <div class="wrong-letters-container">
+            <div id="wrong-letters">
+                <p>Wrong</p>
+                <span>e,r,t,y</span>
+            </div>
+        </div>
+
+
+        <div class="word" id="word">
+            <div class="letter">h</div>
+            <div class="letter">e</div>
+            <div class="letter">l</div>
+            <div class="letter">l</div>
+            <div class="letter">o</div>
+        </div>
     </div>
 
+    <!-- Container for final Messages -->
+    <div class="popup-container" id="popup-container">
+        <div class="popup">
+            <h2 id="final-message">You Have Won</h2>
+            <button id="play-button">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification-container" id="notification-container">
+        <p>You have already entered this letter</p>
+    </div>
 
 </body>
 </html>
