@@ -1,5 +1,5 @@
 const wordEl = document.getElementById('word');
-const wrongLetterEl = document.getElementById('wrong-letters');
+const wrongLettersEl = document.getElementById('wrong-letters');
 const playAgainBtn = document.getElementById('play-again');
 const popup = document.getElementById('popup-container');
 const notification = document.getElementById('notification-container');
@@ -37,7 +37,29 @@ function displayWord() {
 
 // Update the wrong letters
 function updateWrongLettersEL(){
-    console.log('Update Wrong')
+
+    // Display Wrong Letters
+    wrongLettersEl.innerHTML= `
+        ${wrongLetters.length > 0 ? '<p>Wrong</p>' : ''}
+        ${wrongLetters.map(letter => `<span>${letter}</span>`)}
+    `;
+
+    // Display Parts
+    figureParts.forEach((part, index) => {
+        const errors = wrongLetters.length;
+
+        if(index < errors) {
+            part.style.display = 'block';
+        }else {
+            part.style.display = 'none'
+        }
+    });
+
+    // Check if Lost
+    if(wrongLetters.length === figureParts.length) {
+        finalMessage.innerText = "You lost! You are a pleb! A melon! A loser of the highest caliber! I award you no points and may god have mercy on your soul....";
+        popup.style.display = 'flex';
+    }
 }
 
 // Show Notification
@@ -75,4 +97,17 @@ window.addEventListener('keydown', e => {
     }
 });
 
+// Restart the Game and play again
+playAgainBtn.addEventListener('click', () => {
+    // Empty arrays
+    correctLetters.splice(0);
+    wrongLetters.splice(0);
+
+    selectedWord = words[Math.floor(Math.random() * words.length)];
+
+    displayWord();
+    updateWrongLettersEL();
+    popup.style.display = 'none'
+
+})
 displayWord();
